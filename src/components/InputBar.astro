@@ -1,0 +1,73 @@
+---
+import Input from "./Input.astro";
+import ProfileMenu from "./ProfileMenu.astro";
+---
+
+<link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- component -->
+<nav class=" bg-purplebg w-full flex relative justify-between items-center mx-auto px-8 h-20 border-b-2 border-pink z-20">
+    <!-- logo -->
+    <div class="inline-flex">
+        <a class="_o6689fn" href="/main">
+            <img src="https://assets.website-files.com/6316e54af668118fc75d7074/631891f72ba65393139b2a1d_logo-ns-white.svg" loading="lazy" alt="new story">  
+        </a>
+    </div>
+
+    <!-- end logo -->
+
+    <!-- search bar -->
+    <div class="hidden sm:block flex-shrink flex-grow-0 justify-start px-2">
+        <div class="inline-block">
+            <div class="inline-flex items-center max-w-full">
+                    <Input type='text' placeholder='Search' />
+            </div>
+        </div>
+    </div>
+    <!-- end search bar -->
+
+    <!-- login -->
+    <div class="flex-initial">
+      <div class="flex justify-end items-center relative gap-2">
+
+        <div class="block">
+            <div class="inline relative">
+                <div x-data="{ open: false }">
+                    <button x-on:click="open = ! open" type="button" class="inline-flex items-center transition duration-300 relative px-2 text-pink rounded-md hover:text-darkpurple hover:bg-pink">
+                        <span>
+                            <a class="text-3xl"><i class='bx bx-menu'></i></a>
+                        </span>
+                        <span>
+                            <a class="text-3xl"><i class='bx bx-user-circle'></i></a>
+                        </span>
+                    </button>
+                 
+                    <div class="absolute top-2/4 left-0" x-show="open" x-transition>
+                        <div>
+                            <ProfileMenu />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="flex mr-4 items-center">
+          <a class="inline-block py-2 px-3 transition duration-300 text-purplebg bg-pink border-pink border-2 hover:bg-purplebg rounded-lg hover:text-pink" href="/">
+            <div class="flex items-center relative cursor-pointer whitespace-nowrap">Sign In</div>
+          </a>
+          <div class="block relative">
+            <button type="button" class="inline-block text-pink py-2 px-3 hover:bg-gray-100 hover:text-blue-600 rounded-full relative ">
+              <div class="flex items-center h-5">
+                <div class="_xpkakx">
+                    <a class="text-2xl"><i class='bx bx-world' ></i></a>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+    </div>
+</div>
+<!-- end login -->
+</nav>

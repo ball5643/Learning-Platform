@@ -1,0 +1,17 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Props = CollectionEntry<'topic'>['data'];
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+	<body>
+		<main>
+			<section>
+				<h1>{title}</h1>
+			</section>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+{
+    "videos": [
+        {
+            "title": "C in 100 Second",
+            "description": "All about C in 100 seconds",
+            "heroimg": "/src/img/photo2.avif",
+            "icon": "/src/img/icons/unnamed (1).jpg",
+            "chanel": "Fireship",
+            "views": "100k",
+            "time": "1 mounth ago",
+            "subscribers": "237k",
+            "slug": "cinhundredseconds"
+        },
+        {
+            "title": "CSS only",
+            "description": "Using only CSS",
+            "heroimg": "/src/img/photo3.avif",
+            "icon": "/src/img/icons/unnamed.jpg",
+            "chanel": "CSS",
+            "views": "320k",
+            "time": "2 mounth ago",
+            "subscribers": "400k",
+            "slug": "cssonly"
+        },
+        {
+            "title": "Day In Life",
+            "description": "Lorem ipsum dolor sit amet",
+            "heroimg": "/src/img/photo1.avif",
+            "icon": "/src/img/icons/channels4_profile.jpg",
+            "chanel": "Student",
+            "views": "25k",
+            "time": "3 mounth ago",
+            "subscribers": "100k",
+            "slug": "dayinlife"
+        },
+        {
+            "title": "Virtul keybord",
+            "description": "Lorem ipsum dolor sit amet",
+            "heroimg": "/src/img/photo6.avif",
+            "icon": "/src/img/icons/channels4_profile.jpg",
+            "chanel": "HTML/CSS/JS",
+            "views": "75k",
+            "time": "5 mounth ago",
+            "subscribers": "37k",
+            "slug": "keyboard"
+        }
+    ]
+}

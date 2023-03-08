@@ -1,0 +1,16 @@
+---
+import InputBar from "../components/InputBar.astro";
+import ListVideo from "../components/ListVideo.astro";
+import Layout from "../layouts/Layout.astro";
+import SideBar from "../components/SideBar.astro";
+---
+
+<Layout title="Main Page">
+    <div class="sticky top-0">
+        <InputBar />
+    </div>
+    <div class="flex gap-14 bg-purplebg">
+        <SideBar />
+        <ListVideo />
+    </div>
+</Layout>
