@@ -1,39 +1,39 @@
 ---
-import type { Props } from 'astro';
 import BlogPost from '../../layouts/BlogPost.astro';
+import Layout from '../../layouts/Layout.astro';
 
-// const json = await fetch('http://127.0.0.1:3000/src/json/data.json').then((response) =>
-//   response.json()
-// );
-
-const response = await fetch('http://127.0.0.1:3000/src/json/data.json');
-const data = await response.json();
-
-const videoData = data.videos;
 export async function getStaticPaths() {
-	return videoData.map((video: { slug: string; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; }) => ({
+	const response = await fetch('http://127.0.0.1:3000/src/json/data.json');
+	const data = await response.json();
+	
+	const videoData = data.videos;
+	return videoData.map((video: { slug: string; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; description: string, subscribers: string }) => ({
 		params: { slug: video.slug },
-		props: video.title,
+		props: {
+			title: video.title,
+			heroImage: video.heroimg,
+			icon: video.icon,
+			chanel: video.chanel,
+			views: video.views,
+			time: video.time,
+			description: video.description,
+			subscribers: video.subscribers
+		},
 	}));
 }
 
-const title = Astro.props
-
+const { title, description, heroImage, icon, chanel, views, subscribers } = Astro.props
 ---
 
-<html>
-	<body>
-		<h1>{title}</h1>
-	</body>
-</html>
-
-<!-- {
-	videoData.map((video: any) => (
-		<BlogPost {...video}>
-			{
-			    <h1>{title}</h1>
-			}
-		</BlogPost>
-
-	))
-} -->
+<Layout title={title}>
+	<div class="bg-purplebg">
+		<BlogPost 
+		  title={title} 
+		  chanel={chanel}
+		  icon={icon}
+		  views={views}
+		  heroImage={heroImage}
+		  subscribers={subscribers}
+		/>
+	</div>
+</Layout>

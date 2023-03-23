@@ -1,21 +1,23 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
 import Topic from '../../layouts/Topic.astro';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('topic');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
+	const json = await fetch('http://127.0.0.1:3000/src/json/topic.json').then((response) =>
+    response.json()
+    );
+	const topicData = json.topic
+	return topicData.map((topic: { slug: any; title: any; class: any; }) => ({
+		params: { slug: topic.slug },
+		props: {
+			title: topic.title,
+			class: topic.class
+		},
 	}));
-}
-type Props = CollectionEntry<'topic'>;
 
-const post = Astro.props;
-const { Content } = await post.render();
+
+}
+
+const { title } = Astro.props
 ---
 
-<Topic {...post.data}>
-	<h1>{post.data.title}</h1>
-	<Content />
-</Topic>
+<Topic title={title} />

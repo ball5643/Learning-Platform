@@ -1,8 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getCollection } from 'astro:content';
 import InputBar from "../components/InputBar.astro";
-const posts = (await getCollection('topic'))
+
+const json = await fetch('http://127.0.0.1:3000/src/json/topic.json').then((response) =>
+  response.json()
+);
+
+const topicData = json.topic;
 ---
 
 <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
@@ -12,11 +16,11 @@ const posts = (await getCollection('topic'))
     <section class="bg-purplebg" style="height: 100vh;">
         <div class="flex flex-wrap justify-center">
             {
-                posts.map((post) => (
-                    <a href={`/topic/${post.slug}`} class="flex items-center justify-center transition duration-200 w-44 h-44 space-x-1 rounded-md px-2 py-3 text-darkgray hover:bg-lightpurple hover:text-grayone">
-                        <span class="text-4xl"><i class={post.data.class}></i></span>
+                topicData.map((topic: { slug: any; class: string | null | undefined; title: unknown; } ) => (
+                    <a href={`/topic/${topic.slug}`} class="flex items-center justify-center transition duration-200 w-44 h-44 space-x-1 rounded-md px-2 py-3 text-darkgray hover:bg-lightpurple hover:text-grayone">
+                        <span class="text-4xl"><i class={topic.class}></i></span>
                         <span class="hidden md:block">
-                            {post.data.title}
+                            {topic.title}
                         </span>
                     </a>
                 ))

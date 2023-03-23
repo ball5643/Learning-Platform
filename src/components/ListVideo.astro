@@ -1,6 +1,4 @@
 ---
-import { getCollection } from 'astro:content';
-const posts = (await getCollection('video'));
 
 const json = await fetch('http://127.0.0.1:3000/src/json/data.json').then((response) =>
   response.json()
@@ -14,7 +12,7 @@ const videoData = json.videos
         videoData.map((video: { slug: any; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; }) => (
             <li>
                 <a href={`/video/${video.slug}`}>
-                    <div class="h-64 w-64 rounded bg-lightpurple shadow-md cursor-pointer hover:shadow-2xl hover:text-pink">
+                    <div class="h-64 w-64 rounded bg-lightpurple shadow-md cursor-pointer hover:shadow-2xl">
                     <img class="h-3/5 w-5/5 rounded" src={video.heroimg} />
                     <div class="flex mt-4 gap-2">
                     <img class="h-8 w-8 rounded-full ml-2" src={video.icon} />

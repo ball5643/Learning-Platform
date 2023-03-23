@@ -43,6 +43,50 @@
             "time": "5 mounth ago",
             "subscribers": "37k",
             "slug": "keyboard"
+        },
+        {
+            "title": "Angular",
+            "description": "All about C in 100 seconds",
+            "heroimg": "https://i.ytimg.com/vi/Ata9cSC2WpM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBcbvY0N9Cw7KHCfOq9RnmPG0_r_g",
+            "icon": "/src/img/icons/unnamed (1).jpg",
+            "chanel": "Fireship",
+            "views": "100k",
+            "time": "1 mounth ago",
+            "subscribers": "237k",
+            "slug": "angular"
+        },
+        {
+            "title": "JavaScript",
+            "description": "Using only CSS",
+            "heroimg": "https://i.ytimg.com/vi/DHjqpvDnNGE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAGkOr9EJaLT7QbK-7T4KfcW8UZIA",
+            "icon": "/src/img/icons/unnamed (1).jpg",
+            "chanel": "Fireship",
+            "views": "320k",
+            "time": "2 mounth ago",
+            "subscribers": "400k",
+            "slug": "javascript"
+        },
+        {
+            "title": "NodeJS",
+            "description": "Lorem ipsum dolor sit amet",
+            "heroimg": "https://i.ytimg.com/vi/ENrzD9HAZK4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC6wW0dz6LE4pfMDOpDDZo8teyRSA",
+            "icon": "/src/img/icons/unnamed (1).jpg",
+            "chanel": "Fireship",
+            "views": "25k",
+            "time": "3 mounth ago",
+            "subscribers": "100k",
+            "slug": "nodejs"
+        },
+        {
+            "title": "React",
+            "description": "Lorem ipsum dolor sit amet",
+            "heroimg": "https://i.ytimg.com/vi/Tn6-PIqc4UM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA7xLVR7f-tDlEFf3A4oAGaJoTuJw",
+            "icon": "/src/img/icons/unnamed (1).jpg",
+            "chanel": "Fireship",
+            "views": "75k",
+            "time": "5 mounth ago",
+            "subscribers": "37k",
+            "slug": "reactjs"
         }
     ]
 }

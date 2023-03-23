@@ -1,42 +1,38 @@
 ---
 // import type { CollectionEntry } from 'astro:content';
 import UniqueInputBar from '../components/unique/UniqueInputBar.astro';
-import Layout from './Layout.astro';
 
-const { title } = Astro.props;
-// const { title, description, heroImage, icon, chanel, views, subscribers } = Astro.props;
+// const { title, chanel } = Astro.props;
+const { title, description, heroImage, icon, chanel, views, subscribers } = Astro.props;
 ---
 
-<Layout title={title}>
 	<body>
-		<div class="sticky top-0">
-			<UniqueInputBar />
-		</div>
 		<main>
-			<h1>{title}</h1>
-			<!-- <section>
-				<div class="mt-8 ml-14 z-20">
-					<img class="h-2/5 w-3/5 rounded" src={heroImage} alt="" />
-					<div class="mt-4 w-3/5">
-						<p class="font-semibold font-sans text-2xl">{title}</p>
-						<p class="font-sans text-gray-500 text-sm font-medium">{views} views</p>
-						<div class="mt-4 border-t-2 border-b-2 border-gray-200">
-							<div class="flex flex-wrap gap-2 mt-2 mb-2 cursor-pointer w-64">
-								<img class="h-8 w-8 rounded-full" src={icon} />
-								<div>
-									<p class="font-sans text-gray-700 text-md font-medium">{chanel}</p>
-									<p class="font-sans text-gray-500 text-sm font-medium">{subscribers} subscribers</p>
+			<section class="bg-purplebg relative" style="height: 120vh;">
+					<div class="top-0 ">
+						<UniqueInputBar />
+					</div>
+						<div class="w-2/3 absolute left-96 mt-12">
+							<img class="h-2/5 w-3/5 rounded" src={heroImage} alt="" />
+							<div class="mt-4 w-3/5">
+								<p class="font-semibold font-sans text-pink text-2xl">{title}</p>
+								<p class="font-sans text-darkgray text-sm font-medium">{views} views</p>
+								<div class="mt-4 border-t-2 border-b-2 border-green">
+									<div class="flex flex-wrap gap-2 mt-2 mb-2 cursor-pointer w-64">
+										<img class="h-8 w-8 rounded-full" src={icon} />
+										<div>
+											<p class="font-sans text-white text-md font-medium">{chanel}</p>
+											<p class="font-sans text-darkgray text-sm font-medium">{subscribers} subscribers</p>
+										</div>
+										<a href="#" class="font-sans text-purplebg bg-pink text-md font-medium py-2 px-4 rounded-full cursor-pointer hover:text-blue-600">Channel</a>
+									</div>
 								</div>
-								<a href="#" class="font-sans text-gray-700 bg-gray-200 text-md font-medium py-2 px-4 rounded-full cursor-pointer hover:text-blue-600">Channel</a>
+								<div>
+									<p class="font-sans text-white text-xl font-medium">Description:</p>
+									<p class="font-sans text-gray-500 text-sm font-medium">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus cumque voluptas vel? Dolores illo saepe dolorem a et eligendi commodi illum rem laudantium quod voluptatum rerum explicabo, dolorum maiores repellat!</p>
+								</div>
 							</div>
 						</div>
-						<div>
-							<p class="font-sans text-gray-700 text-xl font-medium">Description:</p>
-							<p class="font-sans text-gray-500 text-sm font-medium">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus cumque voluptas vel? Dolores illo saepe dolorem a et eligendi commodi illum rem laudantium quod voluptatum rerum explicabo, dolorum maiores repellat!</p>
-						</div>
-					</div>
-				</div>
-			</section> -->
+				</section>
 		</main>
 	</body>
-</Layout>

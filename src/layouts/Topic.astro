@@ -1,16 +1,22 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-
-type Props = CollectionEntry<'topic'>['data'];
+import Input from "../components/Input.astro";
+const response = await fetch('http://127.0.0.1:3000/src/json/data.json');
+const data = await response.json();
+const videoData = data.videos;
 
 const { title } = Astro.props;
 ---
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 
 <html lang="en">
 	<body>
 		<main>
 			<section>
-				<h1>{title}</h1>
+				{videoData.map((video: any) => (
+					<h1>{video.title}</h1>
+					))}
 			</section>
 		</main>
 	</body>

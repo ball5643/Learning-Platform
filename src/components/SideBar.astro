@@ -1,6 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
-const posts = (await getCollection('topic'))
+
+const json = await fetch('http://127.0.0.1:3000/src/json/topic.json').then((response) =>
+  response.json()
+);
+
+const topicData = json.topic
 ---
 
 <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
@@ -30,11 +34,11 @@ const posts = (await getCollection('topic'))
 
     <div class="border-t-2 border-pink">
     {
-        posts.map((post) => (
-            <a href={`/topic/${post.slug}`} class="flex items-center space-x-1 rounded-md px-2 py-3 text-darkgray hover:bg-lightpurple hover:text-pink">
-                <span class="text-2xl"><i class={post.data.class}></i></span>
+        topicData.map((topic: { slug: any; class: string | null | undefined; title: unknown; }) => (
+            <a href={`/topic/${topic.slug}`} class="flex items-center space-x-1 rounded-md px-2 py-3 text-darkgray hover:bg-lightpurple hover:text-pink">
+                <span class="text-2xl"><i class={topic.class}></i></span>
                 <span class="hidden md:block">
-                    {post.data.title}
+                    {topic.title}
                 </span>
             </a>
         ))
