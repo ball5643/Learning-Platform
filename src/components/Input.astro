@@ -1,50 +1,12 @@
 ---
-// export interface Props {
-// 	type: string;
-// 	placeholder: string;
-// }
 
 // const { type, placeholder } = Astro.props;
 ---
 
-<!-- This is an example component -->
-<!-- <div class="max-w-xl mx-auto">
-	<form>   
-        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
-        <div class="relative">
-            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            </div>
-            <input type="search" id="default-search" class="block p-2.5 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required>
-            <button type="submit" class="text-white absolute right-2 bottom-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-        </div>
-    </form>
-    <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
-</div> -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
 
-<!--
-  This component uses @tailwindcss/forms
-
-  yarn add @tailwindcss/forms
-  npm install @tailwindcss/forms
-
-  plugins: [require('@tailwindcss/forms')]
--->
-
-<label
-  for="UserEmail"
-  class="bg-darkpurple relative block overflow-hidden rounded-md border border-darkgray p-2 shadow-sm focus-within:border-pink focus-within:ring-1 focus-within:ring-pink"
->
-  <input
-    type="text"
-    id="UserEmail"
-    placeholder="Search"
-    class="peer h-6 w-64 md:w-96 border-none text-white bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm placeholder:text-white"
-  />
-
-  <!-- <span
-    class="absolute left-3 top-3 -translate-y-1/2 text-xs text-white transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs"
-  >
-    Search
-  </span> -->
+<label class="bg-darkpurple relative block overflow-hidden rounded-md border border-darkgray p-2 shadow-sm focus-within:border-pink focus-within:ring-1 focus-within:ring-pink">
+  <input type="text" id="searchBar" placeholder="Search" class="peer h-6 w-64 md:w-96 border-none text-white bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm placeholder:text-white" />
+  <a><i class='bx bx-search text-2xl cursor-pointer text-white align-middle'></i></a>
 </label>
+<script>

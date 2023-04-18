@@ -14,17 +14,17 @@ const topicData = json.topic;
 <Layout title="More">
     <InputBar />
     <section class="bg-purplebg" style="height: 100vh;">
-        <div class="flex flex-wrap justify-center">
-            {
-                topicData.map((topic: { slug: any; class: string | null | undefined; title: unknown; } ) => (
-                    <a href={`/topic/${topic.slug}`} class="flex items-center justify-center transition duration-200 w-44 h-44 space-x-1 rounded-md px-2 py-3 text-darkgray hover:bg-lightpurple hover:text-grayone">
-                        <span class="text-4xl"><i class={topic.class}></i></span>
-                        <span class="hidden md:block">
-                            {topic.title}
-                        </span>
-                    </a>
-                ))
-            }
-        </div>
+            <div class="flex flex-wrap w-full">
+                {
+                    topicData.map((topic: { slug: any; class: string | null | undefined; title: unknown; } ) => (
+                        <a href={`/topic/${topic.slug}`} class="flex items-center justify-center transition duration-200 w-1/4 h-44 space-x-1 rounded-md px-2 py-3 text-darkgray hover:bg-lightpurple hover:text-grayone">
+                            <span class="text-4xl"><i class={topic.class}></i></span>
+                            <span class="hidden md:block">
+                                {topic.title}
+                            </span>
+                        </a>
+                    ))
+                }
+            </div>
     </section>
 </Layout>

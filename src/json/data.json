@@ -34,11 +34,11 @@
             "slug": "dayinlife"
         },
         {
-            "title": "Virtul keybord",
+            "title": "Virtual keybord",
             "description": "Lorem ipsum dolor sit amet",
             "heroimg": "/src/img/photo6.avif",
             "icon": "/src/img/icons/channels4_profile.jpg",
-            "chanel": "HTML/CSS/JS",
+            "chanel": "HTML CSS JS",
             "views": "75k",
             "time": "5 mounth ago",
             "subscribers": "37k",
@@ -80,13 +80,35 @@
         {
             "title": "React",
             "description": "Lorem ipsum dolor sit amet",
-            "heroimg": "https://i.ytimg.com/vi/Tn6-PIqc4UM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA7xLVR7f-tDlEFf3A4oAGaJoTuJw",
+            "heroimg": "https://i.ytimg.com/vi/8pDqJVdNa44/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDNkWReFkOJBoYseLDmr8QD0AiSzw",
             "icon": "/src/img/icons/unnamed (1).jpg",
             "chanel": "Fireship",
             "views": "75k",
             "time": "5 mounth ago",
             "subscribers": "37k",
             "slug": "reactjs"
+        },
+        {
+            "title": "React in 100 Seconds",
+            "description": "Lorem ipsum dolor sit amet",
+            "heroimg": "https://i.ytimg.com/vi/Tn6-PIqc4UM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA7xLVR7f-tDlEFf3A4oAGaJoTuJw",
+            "icon": "/src/img/icons/unnamed (1).jpg",
+            "chanel": "Fireship",
+            "views": "75k",
+            "time": "5 mounth ago",
+            "subscribers": "37k",
+            "slug": "reactin"
+        },
+        {
+            "title": "Angular Crash Course",
+            "description": "Lorem ipsum dolor sit amet",
+            "heroimg": "https://i.ytimg.com/vi/3dHNOWTI7H8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDr54VpQaYdlEFj7RP-n8WjkasXHw",
+            "icon": "/src/img/icons/unnamed (1).jpg",
+            "chanel": "Fireship",
+            "views": "75k",
+            "time": "5 mounth ago",
+            "subscribers": "37k",
+            "slug": "angularcourse"
         }
     ]
 }

@@ -2,22 +2,23 @@
 import Topic from '../../layouts/Topic.astro';
 
 export async function getStaticPaths() {
-	const json = await fetch('http://127.0.0.1:3000/src/json/topic.json').then((response) =>
+	const json = await fetch('http://127.0.0.1:3000/src/json/topicvideos.json').then((response) =>
     response.json()
     );
 	const topicData = json.topic
-	return topicData.map((topic: { slug: any; title: any; class: any; }) => ({
+	return topicData.map((topic: {videos: any; slug: any; title: any; class: any; }) => ({
 		params: { slug: topic.slug },
 		props: {
 			title: topic.title,
-			class: topic.class
+			class: topic.class,
+			videos: topic.videos
 		},
 	}));
 
 
 }
 
-const { title } = Astro.props
+const { title, videos } = Astro.props
 ---
 
-<Topic title={title} />
+<Topic title={title} videos={videos} />

@@ -21,9 +21,14 @@
             "slug": "react"
         },
         {
+            "title": "CSS",
+            "class": "bx bxl-css3",
+            "slug": "css"
+        },
+        {
             "title": "Vue",
             "class": "bx bxl-vuejs",
-            "slug": "vue"
+            "slug": "vuejs"
         }
     ]
 }

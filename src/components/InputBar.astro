@@ -1,6 +1,8 @@
 ---
 import Input from "./Input.astro";
 import ProfileMenu from "./ProfileMenu.astro";
+
+const myValue = localStorage.getItem('myValue');
 ---
 
 <!-- <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" /> -->
@@ -53,20 +55,44 @@ import ProfileMenu from "./ProfileMenu.astro";
         </div>
        
         <div class="flex mr-4 items-center gap-2">
-          <a class="inline-block py-2 px-3 transition duration-300 text-purplebg bg-pink border-pink border-2 hover:bg-purplebg rounded-lg hover:text-pink" href="/">
+          <a class="inline-block py-2 px-3 transition duration-300 text-purplebg bg-pink border-pink border-2 hover:bg-purplebg rounded-md hover:text-pink" href="/">
             <div class="flex items-center relative cursor-pointer whitespace-nowrap">Sign In</div>
           </a>
           <div class="block relative">
-            <button type="button" class="inline-block transition duration-300 text-pink p-1.5 hover:bg-pink hover:text-purplebg rounded-full relative ">
+            <button type="button" id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="inline-block transition duration-300 text-pink p-1.5 hover:bg-pink hover:text-purplebg rounded-full relative ">
               <div class="flex items-center h-5">
-                <div class="_xpkakx">
-                    <a class="text-2xl"><i class='bx bx-world' ></i></a>
+                <div>
+                    <span>
+                        <a class="text-2xl"><i class='bx bx-world'></i></a>
+                    </span>
+                    <span>
+                        <a class="text-2xl"><i class='bx bx-chevron-down'></i></a>
+                    </span>
                 </div>
               </div>
             </button>
+
+            <div id="dropdown" class="z-10 hidden bg-darkpurple divide-y divide-gray-100 rounded-lg shadow w-32 dark:bg-gray-700">
+                <ul class="py-3 px-2 text-sm text-darkgray dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                    <li>
+                      <a href="#" class="block px-4 py-2 rounded-lg hover:bg-gray-100 hover:text-pink dark:hover:bg-gray-600 dark:hover:text-white">Dutch</a>
+                    </li>
+                    <li>
+                      <a href="#" class="block px-4 py-2 rounded-lg hover:bg-gray-100 hover:text-pink dark:hover:bg-gray-600 dark:hover:text-white">French</a>
+                    </li>
+                  </ul>
+            </div>
+            </div>
           </div>
         </div>
     </div>
-</div>
 <!-- end login -->
+<!-- <script>
+        function consoleLocalStrg() {
+        const myValue = localStorage.getItem('myValue');
+        console.log(myValue);
+        }
+        let getButton = document.getElementById('bttn')!;
+        getButton.addEventListener('click', consoleLocalStrg)
+</script> -->
 </nav>
