@@ -1,6 +1,6 @@
 ---
 
-const json = await fetch('http://127.0.0.1:3000/src/json/topic.json').then((response) =>
+const json = await fetch('http://localhost:3000/json/topicvideos.json').then((response) =>
   response.json()
 );
 
@@ -37,12 +37,14 @@ const sliceData = topicData.slice(0, 4)
     <div class="border-t-2 border-pink">
     {
         sliceData.map((topic: { slug: any; class: string | null | undefined; title: unknown; }) => (
-            <a href={`/topic/${topic.slug}`} class="flex items-center space-x-1 rounded-md px-2 py-3 text-darkgray hover:bg-lightpurple hover:text-pink">
-                <span class="text-2xl"><i class={topic.class}></i></span>
-                <span class="hidden md:block">
-                    {topic.title}
-                </span>
-            </a>
+            <li class="list-none">
+                <a href={`/topic/${topic.slug}`} class="flex items-center space-x-1 rounded-md px-2 py-3 text-darkgray hover:bg-lightpurple hover:text-pink">
+                    <span class="text-2xl"><i class={topic.class}></i></span>
+                    <span class="hidden md:block">
+                        {topic.title}
+                    </span>
+                </a>
+            </li>
         ))
     }
                 <a href='/more' class="flex items-center space-x-1 rounded-md mt-2 px-2 py-3 text-darkgray hover:bg-lightpurple hover:text-pink">

@@ -1,24 +1,66 @@
 ---
-import Topic from '../../layouts/Topic.astro';
+import InputBar from "../../components/InputBar.astro";
+import SideBar from "../../components/SideBar.astro";
+import Layout from "../../layouts/Layout.astro";
 
-export async function getStaticPaths() {
-	const json = await fetch('http://127.0.0.1:3000/src/json/topicvideos.json').then((response) =>
-    response.json()
-    );
-	const topicData = json.topic
-	return topicData.map((topic: {videos: any; slug: any; title: any; class: any; }) => ({
-		params: { slug: topic.slug },
-		props: {
-			title: topic.title,
-			class: topic.class,
-			videos: topic.videos
-		},
-	}));
+const json = await fetch('http://127.0.0.1:3000/json/topicvideos.json').then((response) =>
+response.json()
+);
+const topicData = json.topic
+// export async function getStaticPaths() {
+// 	return topicData.map((topic: {videos: any; slug: any; title: any; class: any; }) => ({
+// 		params: { slug: topic.slug },
+// 		props: {
+// 			title: topic.title,
+// 			class: topic.class,
+// 			videos: topic.videos
+// 		},
+// 	}));
+// }
 
+const topics = topicData.map((topic: {title: string; videos: any; slug: any;}) => ({
+    title: topic.title,
+    videos: topic.videos,
+    slug: topic.slug
+}));
 
-}
-
-const { title, videos } = Astro.props
+const { slug } = Astro.params;
+const page = topics.find((page: any) => page.slug === slug);
+const { title, videos, } = page
 ---
 
-<Topic title={title} videos={videos} />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+
+<Layout title={title}>
+    <div class="sticky top-0">
+        <InputBar />
+    </div>
+    <div class="flex gap-14 bg-purplebg">
+        <SideBar />
+		<ul class="flex flex-wrap justify-center gap-7 list-none m-8">
+				{videos.map((video: any) => (
+				<li class="list-none">
+                 <a href={`/video/${video.slug}`}>
+                    <div class="h-64 w-64 rounded bg-lightpurple shadow-md cursor-pointer transition duration-200 hover:shadow-2xl hover:bg-grape">
+                    <img class="h-3/5 w-5/5 rounded" src={video.heroimg} />
+                    <div class="flex mt-4 gap-2">
+                    <img class="h-8 w-8 rounded-full ml-2" src={video.icon} />
+                    <div>
+                        <p class="font-semibold font-sans text-pink text-lg">{video.title}</p>
+                        <div class="mt-1">
+                            <p class="font-sans text-darkgray text-sm font-medium">{video.chanel}</p>
+                            <div class="flex gap-2">
+                                <p class="font-sans text-darkgray text-xs font-normal">{video.views} views</p>
+                                <p class="font-sans text-darkgray text-xs font-normal">{video.time}</p>
+                            </div>
+                        </div>
+                     </div>
+                     </div>
+                    </div>
+                 </a>
+                </li>
+				))}
+		</ul>
+    </div>
+</Layout>

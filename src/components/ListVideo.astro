@@ -1,8 +1,8 @@
 ---
-const json = await fetch('http://127.0.0.1:3000/src/json/data.json').then((response) =>
+const json = await fetch('http://localhost:3000/json/data.json').then((response) =>
 response.json()
 );
-
+    
 let videoData = json.videos
 
 ---

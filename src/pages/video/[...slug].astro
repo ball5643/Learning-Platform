@@ -1,15 +1,32 @@
 ---
 import BlogPost from '../../layouts/BlogPost.astro';
 import Layout from '../../layouts/Layout.astro';
+import UniqueInputBar from '../../components/unique/UniqueInputBar.astro';
 
-export async function getStaticPaths() {
-	const response = await fetch('http://127.0.0.1:3000/src/json/data.json');
+	const response = await fetch('http://127.0.0.1:3000/json/data.json');
 	const data = await response.json();
 	
 	const videoData = data.videos;
-	return videoData.map((video: { slug: string; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; description: string, subscribers: string }) => ({
-		params: { slug: video.slug },
-		props: {
+// export async function getStaticPaths() {
+// 	return videoData.map((video: { slug: string; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; description: string, subscribers: string }) => ({
+// 		params: { slug: video.slug },
+// 		props: {
+// 			title: video.title,
+// 			heroImage: video.heroimg,
+// 			icon: video.icon,
+// 			chanel: video.chanel,
+// 			views: video.views,
+// 			time: video.time,
+// 			description: video.description,
+// 			subscribers: video.subscribers
+// 		},
+// 	}));
+// }
+
+const video = videoData.map((video: { slug: string; heroimg: string | null | undefined; 
+	icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; 
+	time: unknown; description: string, subscribers: string }) => ({
+		slug: video.slug,
 			title: video.title,
 			heroImage: video.heroimg,
 			icon: video.icon,
@@ -18,22 +35,45 @@ export async function getStaticPaths() {
 			time: video.time,
 			description: video.description,
 			subscribers: video.subscribers
-		},
 	}));
-}
 
-const { title, description, heroImage, icon, chanel, views, subscribers } = Astro.props
+const { slug } = Astro.params;
+const page = video.find((page: any) => page.slug === slug);
+
+const { title, description, heroImage, icon, chanel, views, subscribers } = page
 ---
 
 <Layout title={title}>
 	<div class="bg-purplebg">
-		<BlogPost 
-		  title={title} 
-		  chanel={chanel}
-		  icon={icon}
-		  views={views}
-		  heroImage={heroImage}
-		  subscribers={subscribers}
-		/>
+		<body>
+			<main>
+				<section class="bg-purplebg relative" style="height: 120vh;">
+						<div class="top-0 ">
+							<UniqueInputBar />
+						</div>
+							<div class="w-2/3 absolute left-1/3 lg:left-1/4 mt-12">
+								<img class="h-2/5 w-3/5 rounded" src={heroImage} alt="" />
+								<div class="mt-4 w-3/5">
+									<p class="font-semibold font-sans text-pink text-2xl">{title}</p>
+									<p class="font-sans text-darkgray text-sm font-medium">{views} views</p>
+									<div class="mt-4 border-t-2 border-b-2 border-green">
+										<div class="flex flex-wrap gap-2 mt-2 mb-2 cursor-pointer w-64">
+											<img class="h-8 w-8 rounded-full" src={icon} />
+											<div>
+												<p class="font-sans text-white text-md font-medium">{chanel}</p>
+												<p class="font-sans text-darkgray text-sm font-medium">{subscribers} subscribers</p>
+											</div>
+											<a href="#" class="font-sans text-purplebg bg-pink text-md font-medium py-2 px-4 rounded-full cursor-pointer hover:text-blue-600">Channel</a>
+										</div>
+									</div>
+									<div>
+										<p class="font-sans text-white text-xl font-medium">Description:</p>
+										<p class="font-sans text-gray-500 text-sm font-medium">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus cumque voluptas vel? Dolores illo saepe dolorem a et eligendi commodi illum rem laudantium quod voluptatum rerum explicabo, dolorum maiores repellat!</p>
+									</div>
+								</div>
+							</div>
+					</section>
+			</main>
+		</body>
 	</div>
 </Layout>

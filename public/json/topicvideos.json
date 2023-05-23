@@ -7,9 +7,9 @@
             "videos": [
                 {
                     "title": "Angular",
-                    "description": "All about C in 100 seconds",
+                    "description": "All about Angular in 100 seconds",
                     "heroimg": "https://i.ytimg.com/vi/Ata9cSC2WpM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBcbvY0N9Cw7KHCfOq9RnmPG0_r_g",
-                    "icon": "/src/img/icons/unnamed (1).jpg",
+                    "icon": "../img/icons/unnamed (1).jpg",
                     "chanel": "Fireship",
                     "views": "100k",
                     "time": "1 mounth ago",
@@ -20,7 +20,7 @@
                     "title": "Angular Crash Course",
                     "description": "Lorem ipsum dolor sit amet",
                     "heroimg": "https://i.ytimg.com/vi/3dHNOWTI7H8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDr54VpQaYdlEFj7RP-n8WjkasXHw",
-                    "icon": "/src/img/icons/unnamed (1).jpg",
+                    "icon": "../img/icons/unnamed (1).jpg",
                     "chanel": "Fireship",
                     "views": "75k",
                     "time": "5 mounth ago",
@@ -31,14 +31,14 @@
         },
         {
             "title": "JavaScript",
-            "class": "bx bxl-angular",
+            "class": "bx bxl-javascript",
             "slug": "javascript",
             "videos": [
                 {
                     "title": "JavaScript",
-                    "description": "Using only CSS",
+                    "description": "Lorem ipsum dolor sit amet",
                     "heroimg": "https://i.ytimg.com/vi/DHjqpvDnNGE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAGkOr9EJaLT7QbK-7T4KfcW8UZIA",
-                    "icon": "/src/img/icons/unnamed (1).jpg",
+                    "icon": "../img/icons/unnamed (1).jpg",
                     "chanel": "Fireship",
                     "views": "320k",
                     "time": "2 mounth ago",
@@ -49,14 +49,14 @@
         },
         {
             "title": "NodeJS",
-            "class": "bx bxl-angular",
+            "class": "bx bxl-nodejs",
             "slug": "nodejs",
             "videos": [
                 {
                     "title": "NodeJS",
                     "description": "Lorem ipsum dolor sit amet",
                     "heroimg": "https://i.ytimg.com/vi/ENrzD9HAZK4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC6wW0dz6LE4pfMDOpDDZo8teyRSA",
-                    "icon": "/src/img/icons/unnamed (1).jpg",
+                    "icon": "../img/icons/unnamed (1).jpg",
                     "chanel": "Fireship",
                     "views": "25k",
                     "time": "3 mounth ago",
@@ -67,14 +67,14 @@
         },
         {
             "title": "React",
-            "class": "bx bxl-angular",
+            "class": "bx bxl-react",
             "slug": "react",
             "videos": [
                 {
                     "title": "React",
                     "description": "Lorem ipsum dolor sit amet",
                     "heroimg": "https://i.ytimg.com/vi/8pDqJVdNa44/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDNkWReFkOJBoYseLDmr8QD0AiSzw",
-                    "icon": "/src/img/icons/unnamed (1).jpg",
+                    "icon": "../img/icons/unnamed (1).jpg",
                     "chanel": "Fireship",
                     "views": "75k",
                     "time": "5 mounth ago",
@@ -85,25 +85,25 @@
                     "title": "React in 100 Seconds",
                     "description": "Lorem ipsum dolor sit amet",
                     "heroimg": "https://i.ytimg.com/vi/Tn6-PIqc4UM/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA7xLVR7f-tDlEFf3A4oAGaJoTuJw",
-                    "icon": "/src/img/icons/unnamed (1).jpg",
+                    "icon": "../img/icons/unnamed (1).jpg",
                     "chanel": "Fireship",
                     "views": "75k",
                     "time": "5 mounth ago",
                     "subscribers": "37k",
-                    "slug": "reactin"
+                    "slug": "reactinhundredsec"
                 }
             ]
         },
         {
             "title": "CSS",
-            "class": "bx bxl-angular",
+            "class": "bx bxl-css3",
             "slug": "css",
             "videos": [
                 {
                     "title": "CSS only",
                     "description": "Using only CSS",
-                    "heroimg": "/src/img/photo3.avif",
-                    "icon": "/src/img/icons/unnamed.jpg",
+                    "heroimg": "../img/photo3.avif",
+                    "icon": "../img/icons/unnamed.jpg",
                     "chanel": "CSS",
                     "views": "320k",
                     "time": "2 mounth ago",
@@ -113,8 +113,8 @@
                 {
                     "title": "Virtual keybord",
                     "description": "Lorem ipsum dolor sit amet",
-                    "heroimg": "/src/img/photo6.avif",
-                    "icon": "/src/img/icons/channels4_profile.jpg",
+                    "heroimg": "../img/photo6.avif",
+                    "icon": "../img/icons/channels4_profile.jpg",
                     "chanel": "HTML CSS JS",
                     "views": "75k",
                     "time": "5 mounth ago",
