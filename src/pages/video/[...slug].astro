@@ -3,10 +3,10 @@ import BlogPost from '../../layouts/BlogPost.astro';
 import Layout from '../../layouts/Layout.astro';
 import UniqueInputBar from '../../components/unique/UniqueInputBar.astro';
 
-	const response = await fetch('http://127.0.0.1:3000/json/data.json');
-	const data = await response.json();
+	const response = await fetch('http://127.0.0.1:8055/items/Videos');
+	const responceData = await response.json();
 	
-	const videoData = data.videos;
+	const videoData = responceData.data;
 // export async function getStaticPaths() {
 // 	return videoData.map((video: { slug: string; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; description: string, subscribers: string }) => ({
 // 		params: { slug: video.slug },

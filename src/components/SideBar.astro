@@ -1,10 +1,10 @@
 ---
 
-const json = await fetch('http://localhost:3000/json/topicvideos.json').then((response) =>
+const json = await fetch('http://127.0.0.1:8055/items/Topics').then((response) =>
   response.json()
 );
 
-const topicData = json.topic
+const topicData = json.data;
 
 const sliceData = topicData.slice(0, 4)
 ---
