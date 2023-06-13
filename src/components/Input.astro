@@ -1,13 +1,27 @@
 ---
-
+// if (Astro.request.method === "POST") {
+//   try {
+//     const data = await Astro.request.formData();
+//     const name = data.get("username");
+//     // Do something with the data
+//     console.log(name)
+//   } catch (error) {
+//     if (error instanceof Error) {
+//       console.error(error.message);
+//     }
+//   }
+// }
+const search = Astro.url.searchParams.get('search')! || '';
 // const { type, placeholder } = Astro.props;
 ---
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
 
-<label class="bg-darkpurple relative overflow-hidden rounded-md border border-darkgray p-2 shadow-sm focus-within:border-pink focus-within:ring-1 focus-within:ring-pink">
-  <input type="text" id="searchBar" placeholder="Search" class="peer h-6 w-2/3 border-none text-white bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm placeholder:text-white" />
-  <!-- <a><i class='bx bx-search text-2xl cursor-pointer text-white align-middle'></i></a> -->
-</label>
+<form method="POST">
+  <label class="bg-darkpurple relative overflow-hidden rounded-md border border-darkgray p-2 shadow-sm focus-within:border-pink focus-within:ring-1 focus-within:ring-pink">
+    <input type="text" id="searchBar" name="username" required placeholder="Search" class="peer h-6 w-2/3 border-none text-white bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm placeholder:text-white" />
+  </label>
+</form>
+
 
 

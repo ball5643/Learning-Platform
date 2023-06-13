@@ -1,5 +1,5 @@
 ---
-const json = await fetch('http://127.0.0.1:8055/items/Videos').then((response) =>
+const json = await fetch(`http://127.0.0.1:8055/items/Videos?filter[title][_contains]=something` || '').then((response) =>
 response.json()
 );
     

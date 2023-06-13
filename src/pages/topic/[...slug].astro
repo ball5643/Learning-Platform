@@ -3,12 +3,12 @@ import InputBar from "../../components/InputBar.astro";
 import SideBar from "../../components/SideBar.astro";
 import Layout from "../../layouts/Layout.astro";
 
-
-const json = await fetch('http://127.0.0.1:8055/items/Videos?filter[topic_id]=2').then((response) =>
+const { slug }= Astro.params;
+const json = await fetch(`http://127.0.0.1:8055/items/Videos?filter[topic_id][slug][_eq]=${slug}`).then((response) =>
 response.json()
 );
 const topicData = json.data;
-
+// {"_eq":[{"topic_id":{"_eq": "1"}},{"topic_id":{"_eq":"2"}}]}
 ---
 
 
@@ -24,7 +24,7 @@ const topicData = json.data;
         <SideBar />
         {
         topicData.map((video: { slug: any; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; }) => (
-            <li>
+            <li class="list-none mt-8">
                 <a href={`/video/${video.slug}`}>
                     <div class="h-64 w-64 rounded bg-lightpurple shadow-md cursor-pointer transition duration-200 hover:shadow-2xl hover:bg-grape">
                     <img class="h-3/5 w-5/5 rounded" src={video.heroimg} />
