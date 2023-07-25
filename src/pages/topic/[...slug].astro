@@ -1,10 +1,10 @@
 ---
+import InputBarNoSearch from "../../components/unique/InputBarNoSearch.astro";
 import InputBar from "../../components/InputBar.astro";
-import SideBar from "../../components/SideBar.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const { slug }= Astro.params;
-const json = await fetch(`http://127.0.0.1:8055/items/Videos?filter[topic_id][slug][_eq]=${slug}`).then((response) =>
+const json = await fetch(`http://127.0.0.1:8055/items/Videos?filter[topic_ID][slug][_contains]=${slug}`).then((response) =>
 response.json()
 );
 const topicData = json.data;
@@ -16,35 +16,36 @@ const topicData = json.data;
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 
-<Layout title="Something">
+<Layout title={slug!.charAt(0).toUpperCase() + slug!.slice(1)}>
     <div class="sticky top-0">
         <InputBar />
     </div>
-    <div class="flex gap-14 bg-purplebg">
-        <SideBar />
-        {
-        topicData.map((video: { slug: any; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; }) => (
-            <li class="list-none mt-8">
-                <a href={`/video/${video.slug}`}>
-                    <div class="h-64 w-64 rounded bg-lightpurple shadow-md cursor-pointer transition duration-200 hover:shadow-2xl hover:bg-grape">
-                    <img class="h-3/5 w-5/5 rounded" src={video.heroimg} />
-                    <div class="flex mt-4 gap-2">
-                    <img class="h-8 w-8 rounded-full ml-2" src={video.icon} />
-                    <div>
-                        <p class="font-semibold font-sans text-pink text-lg">{video.title}</p>
-                        <div class="mt-1">
-                            <p class="font-sans text-darkgray text-sm font-medium">{video.chanel}</p>
-                            <div class="flex gap-2">
-                                <p class="font-sans text-darkgray text-xs font-normal">{video.views} views</p>
-                                <p class="font-sans text-darkgray text-xs font-normal">{video.time}</p>
+    <div class="flex gap-8 bg-purplebg ml-16 lg:ml-60 h-full">
+        <ul class="flex flex-wrap justify-center gap-7 list-none m-4">
+            {
+                topicData.map((video: { slug: any; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; }) => (
+                    <li>
+                        <a href={`/video/${video.slug}`}>
+                            <div class="h-64 w-64 rounded bg-lightpurple shadow-md cursor-pointer transition duration-200 hover:shadow-2xl hover:bg-grape">
+                            <img class="h-3/5 w-5/5 rounded" src={video.heroimg} />
+                            <div class="flex mt-4 gap-2">
+                            <img class="h-8 w-8 rounded-full ml-2" src={video.icon} />
+                            <div>
+                                <p class="font-semibold font-sans text-pink text-lg">{video.title}</p>
+                                <div class="mt-1">
+                                    <p class="font-sans text-darkgray text-sm font-medium">{video.chanel}</p>
+                                    <div class="flex gap-2">
+                                        <p class="font-sans text-darkgray text-xs font-normal">{video.views} views</p>
+                                        <p class="font-sans text-darkgray text-xs font-normal">{video.time}</p>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
-                    </div>
-                    </div>
-                </div>
-                </a>
-            </li>
-        ))
-        }
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
     </div>
 </Layout>

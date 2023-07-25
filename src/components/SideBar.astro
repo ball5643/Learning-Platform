@@ -1,6 +1,6 @@
 ---
 
-const json = await fetch('http://127.0.0.1:8055/items/Topics').then((response) =>
+const json = await fetch('http://127.0.0.1:8055/items/Topics?limit=25&fields[]=class&fields[]=slug&fields[]=status&fields[]=title&fields[]=topic_user.directus_users_id.email&fields[]=id&sort[]=id&page=1&filter[status][_neq]=archived').then((response) =>
   response.json()
 );
 
@@ -11,27 +11,27 @@ const sliceData = topicData.slice(0, 4)
 
 <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
 
-<div class="flex border-r-2 border-pink">
-    <aside class="flex w-22 md:w-52 flex-col space-y-2 bg-purplebg p-2" style="height: 100vh"
+<div class="absolute top-20 left-0 flex border-r-2 border-pink">
+    <aside class="flex w-22 lg:w-52 flex-col space-y-2 bg-purplebg p-2" style="height: 100vh"
     x-show="asideOpen">
     <a href="/main" class="flex items-center text-darkgray space-x-1 rounded-md px-2 py-3 hover:bg-lightpurple hover:text-pink">
         <span class="text-2xl"><i class="bx bx-home"></i></span>
-        <span class="hidden md:block">Dashboard</span>
+        <span class="hidden lg:block">Dashboard</span>
     </a>
 
     <a href="/history" class="flex items-center text-darkgray space-x-1 rounded-md px-2 py-3 hover:bg-lightpurple hover:text-pink">
         <span class="text-2xl"><i class="bx bx-history"></i></span>
-        <span class="hidden md:block">History</span>
+        <span class="hidden lg:block">History</span>
     </a>
 
     <a href="/myfavourite" class="flex items-center text-darkgray space-x-1 rounded-md px-2 py-3 hover:bg-lightpurple hover:text-pink">
         <span class="text-2xl"><i class='bx bx-bookmark'></i></span>
-        <span class="hidden md:block">Saved</span>
+        <span class="hidden lg:block">Saved</span>
     </a>
 
     <a href="/profile" class="flex items-center text-darkgray space-x-1 rounded-md px-2 py-3 hover:bg-lightpurple hover:text-pink">
         <span class="text-2xl"><i class="bx bx-user"></i></span>
-        <span class="hidden md:block">Profile</span>
+        <span class="hidden lg:block">Profile</span>
     </a>
 
     <div class="border-t-2 border-pink">
@@ -40,7 +40,7 @@ const sliceData = topicData.slice(0, 4)
             <li class="list-none">
                 <a href={`/topic/${topic.slug}`} class="flex items-center space-x-1 rounded-md px-2 py-3 text-darkgray hover:bg-lightpurple hover:text-pink">
                     <span class="text-2xl"><i class={topic.class}></i></span>
-                    <span class="hidden md:block">
+                    <span class="hidden lg:block">
                         {topic.title}
                     </span>
                 </a>
@@ -49,7 +49,7 @@ const sliceData = topicData.slice(0, 4)
     }
                 <a href='/more' class="flex items-center space-x-1 rounded-md mt-2 px-2 py-3 text-darkgray hover:bg-lightpurple hover:text-pink">
                     <span class="text-2xl"><i class='bx bx-dots-horizontal-rounded'></i></span>
-                    <span class="hidden md:block">
+                    <span class="hidden lg:block">
                         More
                     </span>
                 </a>

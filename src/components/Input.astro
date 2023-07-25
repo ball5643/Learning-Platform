@@ -1,17 +1,25 @@
 ---
-// if (Astro.request.method === "POST") {
-//   try {
-//     const data = await Astro.request.formData();
-//     const name = data.get("username");
-//     // Do something with the data
-//     console.log(name)
-//   } catch (error) {
-//     if (error instanceof Error) {
-//       console.error(error.message);
-//     }
-//   }
-// }
-const search = Astro.url.searchParams.get('search')! || '';
+import { URLSearchParams } from 'url';
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const name = data.get("username");
+
+// Create a new URL object
+const url = new URL('http://localhost:3000/main');
+const params = new URLSearchParams(url.search);
+params.set('search', `${name}`);
+url.search = params.toString()
+console.log(url.toString());
+Astro.url.href = url.toString();
+
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+
 // const { type, placeholder } = Astro.props;
 ---
 

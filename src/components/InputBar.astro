@@ -1,6 +1,7 @@
 ---
 import Input from "./Input.astro";
 import ProfileMenu from "./ProfileMenu.astro";
+import SideBar from "./SideBar.astro";
 
 const myValue = localStorage.getItem('myValue');
 ---
@@ -9,13 +10,18 @@ const myValue = localStorage.getItem('myValue');
 <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 <!-- component -->
-<nav class=" bg-purplebg w-full flex relative justify-between items-center mx-auto px-8 h-20 border-b-2 border-pink z-20">
+<nav class=" bg-purplebg w-full flex relative justify-between gap-4 items-center px-8 h-20 border-b-2 border-pink z-20">
     <!-- logo -->
-    <div class="inline-flex">
-        <a class="_o6689fn" href="/main">
-            <img src="https://assets.website-files.com/6316e54af668118fc75d7074/631891f72ba65393139b2a1d_logo-ns-white.svg" loading="lazy" alt="new story">  
-        </a>
+        <div class="inline-flex">
+            <a class="_o6689fn" href="/main">
+                <img src="https://assets.website-files.com/6316e54af668118fc75d7074/631891f72ba65393139b2a1d_logo-ns-white.svg" loading="lazy" alt="new story">  
+            </a>
+        </div>
+
+    <div class="absolute top-0 left-0">
+        <SideBar />
     </div>
+
 
     <!-- end logo -->
 
@@ -65,19 +71,19 @@ const myValue = localStorage.getItem('myValue');
         </div>
        
         <div class="flex mr-2 items-center gap-2">
-          <a class="inline-block py-2 px-3 transition duration-300 text-purplebg bg-pink border-pink border-2 hover:bg-purplebg rounded-md hover:text-pink" href="/">
+          <a id="pinkSignInBtn" class="inline-block py-2 px-3 transition duration-300 text-purplebg bg-pink border-pink border-2 hover:bg-purplebg rounded-md hover:text-pink" href="/">
             <div class="flex items-center relative cursor-pointer whitespace-nowrap">Sign In</div>
           </a>
           <div class="block relative">
-            <button type="button" id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="inline-block transition duration-300 text-pink p-1.5 hover:bg-pink hover:text-purplebg rounded-full relative ">
+            <button type="button" id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="hidden sm:inline-block transition duration-300 text-pink p-1.5 hover:bg-pink hover:text-purplebg rounded-full relative ">
               <div class="flex items-center h-5">
                 <div>
                     <span>
                         <a class="text-2xl"><i class='bx bx-world'></i></a>
                     </span>
-                    <span>
-                        <a class="text-2xl"><i class='bx bx-chevron-down'></i></a>
-                    </span>
+                    <!-- <span>
+                        <a class="text-2xl hidden md:inline-block"><i class='bx bx-chevron-down'></i></a>
+                    </span> -->
                 </div>
               </div>
             </button>
@@ -96,13 +102,14 @@ const myValue = localStorage.getItem('myValue');
           </div>
         </div>
     </div>
-<!-- end login -->
-<!-- <script>
-        function consoleLocalStrg() {
-        const myValue = localStorage.getItem('myValue');
-        console.log(myValue);
-        }
-        let getButton = document.getElementById('bttn')!;
-        getButton.addEventListener('click', consoleLocalStrg)
-</script> -->
 </nav>
+
+<script>
+const element = document.getElementById('pinkSignInBtn')!;
+const localStrgData = localStorage.auth_token?.length;
+if (localStrgData > 0) {
+    element.style.display = "none"
+} else {
+    element.style.display = "inline-block"
+}
+</script>

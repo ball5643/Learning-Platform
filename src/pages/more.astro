@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import InputBar from "../components/InputBar.astro";
+import InputBarNoSearch from "../components/unique/InputBarNoSearch.astro";
 
 const json = await fetch('http://localhost:3000/json/topicvideos.json').then((response) =>
   response.json()
@@ -12,7 +13,7 @@ const topicData = json.topic;
 <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
 
 <Layout title="More">
-    <InputBar />
+    <InputBarNoSearch />
     <section class="bg-purplebg" style="height: 100vh;">
             <div class="flex flex-wrap w-full">
                 {

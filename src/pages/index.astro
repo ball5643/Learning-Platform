@@ -5,13 +5,12 @@ import Layout from '../layouts/Layout.astro';
 
 <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
 
-<Layout title="Test Youtube">
-	<!-- component -->
+<Layout title="Login">
 <!-- component -->
 <div class="min-h-screen flex flex-col justify-center sm:py-12 bg-purplebg">
 	<div class="p-10 xs:p-0 mx-auto md:w-full md:max-w-md">
-		<div class="">
-			<img src="https://assets.website-files.com/6316e54af668118fc75d7074/631891f72ba65393139b2a1d_logo-ns-white.svg" loading="lazy" alt="new story" class="ml-24 mb-8">  
+		<div class="flex justify-center">
+			<img src="https://assets.website-files.com/6316e54af668118fc75d7074/631891f72ba65393139b2a1d_logo-ns-white.svg" loading="lazy" alt="new story" class="mb-4">  
 		</div>
 	  <div class="bg-grayone shadow w-full rounded-lg divide-y divide-graythree">
 		<div class="px-5 py-7">
@@ -19,38 +18,84 @@ import Layout from '../layouts/Layout.astro';
 		  <input type="text" class="border rounded-lg bg-grayone text-purplebg px-3 py-2 mt-1 mb-5 text-sm w-full transition duration-300 focus:outline-none focus:border focus:border-pink border-purplebg" placeholder="name@example.com" />
 		  <label class="font-semibold text-base pb-1 block text-purplebg">Password</label>
 		  <input type="password" class="border rounded-lg bg-grayone text-purplebg px-3 py-2 mt-1 mb-5 text-sm w-full transition duration-300 focus:outline-none focus:border focus:border-pink border-purplebg" placeholder="password" />
-		  <a href="/main" type="button" class="transition duration-400 bg-pink focus:shadow-sm focus:ring-opacity-50 w-full py-2.5 hover:bg-darkpink rounded-lg text-sm shadow-sm  font-semibold text-center inline-block cursor-pointer">
+		  <button type="button" id="loginBtn" class="transition duration-400 bg-pink focus:shadow-sm focus:ring-opacity-50 w-full py-2.5 hover:bg-darkpink rounded-lg text-sm shadow-sm  font-semibold text-center inline-block cursor-pointer">
 			  <span class="inline-block mr-2 font-bold text-base text-purplebg">Login</span>
-		  </a>
+		  </button>
 		</div>
-		<div class="p-5">
+		<!-- <div class="p-5">
 			<div class="grid grid-cols-3 gap-1">
 				<a type="button" class="transition duration-200 border border-graythree text-grayfive w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block cursor-pointer hover:text-pink"><span><i class='bx bxl-twitter'></i></span> <span>Twitter</span></a>
-				<a type="button" class="transition duration-200 border border-graythree text-grayfive w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block cursor-pointer hover:text-pink"><span><i class='bx bxl-google' ></i></span> <span>Google</span></a>
+				<a type="button" class="transi: anytion duration-200 border border-graythree text-grayfive w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block cursor-pointer hover:text-pink"><span><i class='bx bxl-google' ></i></span> <span>Google</span></a>
 				<a type="button" class="transition duration-200 border border-graythree text-grayfive w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block cursor-pointer hover:text-pink"><span><i class='bx bxl-github' ></i></span> <span>GitHub</span></a>
 			</div>
-		</div>
-		  <div class="py-5 px-5">
+		</div> -->
+		  <!-- <div class="py-5 px-5">
 		  <div class="flex flex-wrap justify-between">
 			<div class="text-center sm:text-left whitespace-nowrap">
-				<a href="#"
-				class="flex items-center w-44 p-2 text-purplebg text-sm font-medium transition duration-500  rounded-lg dark:text-white hover:bg-lightpink hover:text-purplebg">
-				<span class="text-xl">
-					<i class='bx bx-lock-open'></i>
-				</span>
-				<span class="flex-1 ml-3 whitespace-nowrap">Forget Password</span>
-				</a>
-			</div>
-			<a href="/signup"
-			class="flex items-center w-28 p-2 text-purplebg text-sm font-medium transition duration-500 rounded-lg dark:text-white hover:bg-lightpink hover:text-purplebg">
-			<span class="text-xl">
-				<i class='bx bx-log-in-circle'></i>
-			</span>
-			<span class="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
-		    </a>
 		  </div>
 		</div>
-	  </div>
+	  </div> -->
 	</div>
   </div>
 </Layout>
+
+<script>
+//http://localhost:3000/main
+import { Directus } from '@directus/sdk';
+const testEmail = 'yelisei@internship.newstory.nl';
+const testPassword = 'testpassword12345';
+const directus = new Directus('http://127.0.0.1:8055', {
+	auth: {
+		mode: 'cookie', // 'json' in Node.js
+		autoRefresh: true,
+		msRefreshBeforeExpires: 30000,
+		staticToken: '',
+	},
+});
+
+async function testClick() {
+  try {
+    await directus.auth.login({
+      email: testEmail,
+      password: testPassword,
+    });
+	window.location.href = "http://localhost:3000/main";
+    console.log('Logged in successfully');
+  } catch (error) {
+    console.error('Login failed', error);
+  }
+}
+
+const button = document.getElementById("loginBtn")!;
+button.addEventListener("click", testClick);
+</script>
+
+<!-- <script src="https://unpkg.com/@directus/sdk-js"></script>
+<script src="https://unpkg.com/@directus/sdk-js-cookie-storage"></script>
+<script>
+const testEmail = 'yelisei@internship.newstory.nl';
+const testPassword = 'testpassword12345';
+
+const directus = new DirectusSDK({
+  url: 'http://127.0.0.1:8055',
+  storage: new DirectusCookieStorage({
+    prefix: 'directus', // optional, a prefix for cookie names
+    secure: false, // optional, set it to true if using HTTPS
+  }),
+});
+
+async function testClick() {
+  try {
+    await directus.auth.login({
+      email: testEmail,
+      password: testPassword,
+    });
+    console.log('Logged in successfully');
+  } catch (error) {
+    console.error('Login failed', error);
+  }
+}
+
+const button = document.getElementById('loginBtn');
+button.addEventListener('click', testClick);
+</script> -->

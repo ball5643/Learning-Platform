@@ -1,13 +1,31 @@
 ---
-const json = await fetch(`http://127.0.0.1:8055/items/Videos?filter[title][_contains]=something` || '').then((response) =>
+// const search = Astro.url.searchParams.get('search')! || '';
+// let json = { data: []};
+// if (search.length > 0) {
+//     json = await fetch(`http://127.0.0.1:8055/items/Videos?filter[title][_contains]=${search}` || '').then((response) =>
+//     response.json()
+//     );  
+// } else if (localStorage.auth_token?.length > 0){
+//     json = await fetch(`http://127.0.0.1:8055/items/Topics?limit=25&fields[]=class&fields[]=slug&fields[]=status&fields[]=title&fields[]=topic_user.directus_users_id.email&fields[]=id&sort[]=id&page=1&filter[status][_neq]=archived&filter[_and][0][_and][0][topic_user][directus_users_id][id][_eq]=5b5adbfe-7d2f-401a-9aa2-89a1c9ffba10`).then((response) =>
+//     response.json()
+//     );  
+// }
+// else {
+//     json = await fetch(`http://127.0.0.1:8055/items/Videos`).then((response) =>
+//     response.json()
+//     );
+// }
+// const json = await fetch(`http://127.0.0.1:8055/items/Videos?filter={"_or":[{"title":{"_contains": "angular"}, {"description":{"_contains": "angular"}}]}` || '').then((response) =>
+// response.json()
+// );
+const json = await fetch('http://127.0.0.1:8055/items/Videos?limit=25&fields[]=title&fields[]=slug&fields[]=status&fields[]=topic_ID.topic_user.directus_users_id.id&fields[]=description&fields[]=heroimg&fields[]=icon&fields[]=chanel&fields[]=views&fields[]=videolink&fields[]=id&sort[]=id&page=1&filter[_and][0][_and][0][topic_ID][topic_user][directus_users_id][id][_eq]=$CURRENT_USER&filter[_and][1][status][_neq]=archived').then((response) =>
 response.json()
 );
-    
-let videoData = json.data
+const videoData = json.data;
 
 ---
 
-<ul class="flex flex-wrap justify-center gap-7 list-none m-8">
+<ul class="flex flex-wrap justify-center gap-7 list-none m-4">
     {
         videoData.map((video: { slug: any; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; }) => (
             <li>

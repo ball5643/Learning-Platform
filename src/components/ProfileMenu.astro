@@ -53,8 +53,8 @@
 					</a>
 				</li>
 				<li>
-					<a href="#"
-						class="flex items-center p-2 text-base font-normal text-red-500 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-gray-700">
+					<a id="signOutBtn"
+						class="flex items-center p-2 cursor-pointer text-base font-normal text-red-500 rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-gray-700">
 						<span class="text-2xl text-red-500">
 							<i class='bx bxs-log-out-circle' ></i>
 						</span>
@@ -65,3 +65,20 @@
 		</div>
 	</aside>
 </div>
+
+<script>
+import { Directus } from '@directus/sdk';
+const directus = new Directus('http://127.0.0.1:8055');
+const localStrgData = localStorage?.length;
+	async function signOut() {
+		location.reload();
+		await directus.auth.refresh();
+	}
+	const button = document.getElementById("signOutBtn")!;
+	button.addEventListener("click", signOut);
+if (localStrgData <= 0) {
+    button.style.display = "none"
+} else {
+    button.style.display = "block"
+}
+</script>

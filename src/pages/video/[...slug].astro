@@ -25,7 +25,7 @@ import UniqueInputBar from '../../components/unique/UniqueInputBar.astro';
 
 const video = videoData.map((video: { slug: string; heroimg: string | null | undefined; 
 	icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; 
-	time: unknown; description: string, subscribers: string }) => ({
+	time: unknown; description: string, subscribers: string, videolink: string }) => ({
 		slug: video.slug,
 			title: video.title,
 			heroImage: video.heroimg,
@@ -34,13 +34,14 @@ const video = videoData.map((video: { slug: string; heroimg: string | null | und
 			views: video.views,
 			time: video.time,
 			description: video.description,
-			subscribers: video.subscribers
+			subscribers: video.subscribers,
+			videolink: video.videolink
 	}));
 
 const { slug } = Astro.params;
 const page = video.find((page: any) => page.slug === slug);
 
-const { title, description, heroImage, icon, chanel, views, subscribers } = page
+const { title, description, heroImage, icon, chanel, views, subscribers, videolink } = page
 ---
 
 <Layout title={title}>
@@ -48,29 +49,34 @@ const { title, description, heroImage, icon, chanel, views, subscribers } = page
 		<body>
 			<main>
 				<section class="bg-purplebg relative" style="height: 120vh;">
-						<div class="top-0 ">
+						<div class="top-0 sticky z-50">
 							<UniqueInputBar />
 						</div>
-							<div class="w-2/3 absolute left-1/3 lg:left-1/4 mt-12">
-								<img class="h-2/5 w-3/5 rounded" src={heroImage} alt="" />
-								<div class="mt-4 w-3/5">
-									<p class="font-semibold font-sans text-pink text-2xl">{title}</p>
-									<p class="font-sans text-darkgray text-sm font-medium">{views} views</p>
-									<div class="mt-4 border-t-2 border-b-2 border-green">
-										<div class="flex flex-wrap gap-2 mt-2 mb-2 cursor-pointer w-64">
-											<img class="h-8 w-8 rounded-full" src={icon} />
-											<div>
-												<p class="font-sans text-white text-md font-medium">{chanel}</p>
-												<p class="font-sans text-darkgray text-sm font-medium">{subscribers} subscribers</p>
+							<div class="w-3/4 relative mt-12 z-10 left-1/4 mr-0">
+							<!-- <div class="flex justify-center relative mt-12 z-10"> -->
+									<!-- <img class="h-2/5 w-3/5 rounded" src={heroImage} alt="" /> -->
+										<iframe class="w-3/5 h-96" src={videolink} 
+										title="YouTube video player" 
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+										allowfullscreen></iframe>
+										<div class="mt-4 w-3/5">
+											<p class="font-semibold font-sans text-pink text-lg sm:text-2xl">{title}</p>
+											<p class="font-sans text-darkgray text-sm font-medium">{views} views</p>
+											<div class="mt-4 border-t-2 border-b-2 border-green">
+												<div class="flex flex-wrap gap-2 mt-2 mb-2 cursor-pointer">
+													<img class="h-8 w-8 rounded-full" src={icon} />
+													<div>
+														<p class="font-sans text-white text-md font-medium">{chanel}</p>
+														<p class="font-sans text-darkgray text-sm font-medium">{subscribers} subscribers</p>
+													</div>
+													<a href="#" class="hidden sm:block font-sans text-purplebg bg-pink text-center align-middle text-base sm:text-lg font-medium py-2 px-4 rounded-full cursor-pointer hover:text-blue-600">Channel</a>
+												</div>
 											</div>
-											<a href="#" class="font-sans text-purplebg bg-pink text-md font-medium py-2 px-4 rounded-full cursor-pointer hover:text-blue-600">Channel</a>
+											<div>
+												<p class="font-sans text-white text-xl font-medium">Description:</p>
+												<p class="font-sans text-gray-500 sm:text-base text-xs font-medium">{description}</p>
+											</div>
 										</div>
-									</div>
-									<div>
-										<p class="font-sans text-white text-xl font-medium">Description:</p>
-										<p class="font-sans text-gray-500 text-sm font-medium">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus cumque voluptas vel? Dolores illo saepe dolorem a et eligendi commodi illum rem laudantium quod voluptatum rerum explicabo, dolorum maiores repellat!</p>
-									</div>
-								</div>
 							</div>
 					</section>
 			</main>

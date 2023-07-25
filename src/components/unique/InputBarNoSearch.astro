@@ -10,17 +10,9 @@ import ProfileMenu from "../ProfileMenu.astro";
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <!-- component -->
-<nav class=" bg-purplebg w-full flex relative justify-between items-center gap-4 mx-auto px-2 h-20 border-b-2 border-pink z-20">
+<nav class=" bg-purplebg w-full flex relative justify-between items-center mx-auto px-8 h-20 border-b-2 border-pink z-20">
     <!-- logo -->
-    <div class="inline-flex items-center gap-2">
-
-        <div class="menu">
-            <a class="text-3xl text-white cursor-pointer hover:text-pink"><i class='bx bx-menu'></i></a>
-        </div>
-        
-        <div class="hidden absolute top-0 left-0 animate-waving-hand" x-show="open" x-transition>
-            <SideBar />
-        </div>
+    <div class="inline-flex items-center gap-4">
 
             <div class="inline-flex">
                 <a class="_o6689fn" href="/main">
@@ -77,9 +69,6 @@ import ProfileMenu from "../ProfileMenu.astro";
                         <span>
                             <a class="text-2xl"><i class='bx bx-world'></i></a>
                         </span>
-                        <!-- <span>
-                            <a class="text-2xl"><i class='bx bx-chevron-down'></i></a>
-                        </span> -->
                     </div>
                   </div>
                 </button>
@@ -102,17 +91,11 @@ import ProfileMenu from "../ProfileMenu.astro";
 </nav>
 
 <script>
-    const menu = document.querySelector('.menu');
-    const toggleMenu = document.querySelector('.menu + div.hidden');
-
-    menu?.addEventListener('click', () => {
-        toggleMenu?.classList.toggle("hidden");
-    });
-const element = document.getElementById('pinkSignInBtn')!;
-const localStrgData = localStorage.auth_token?.length;
-if (localStrgData > 0) {
-    element.style.display = "none"
-} else {
-    element.style.display = "inline-block"
-}
+    const element = document.getElementById('pinkSignInBtn')!;
+    const localStrgData = localStorage.auth_token?.length;
+    if (localStrgData > 0) {
+        element.style.display = "none"
+    } else {
+        element.style.display = "inline-block"
+    }
 </script>
