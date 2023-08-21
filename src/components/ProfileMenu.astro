@@ -71,6 +71,7 @@ import { Directus } from '@directus/sdk';
 const directus = new Directus('http://127.0.0.1:8055');
 const localStrgData = localStorage?.length;
 	async function signOut() {
+		localStorage.clear();
 		location.reload();
 		await directus.auth.refresh();
 	}

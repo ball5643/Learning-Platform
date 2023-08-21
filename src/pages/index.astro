@@ -22,44 +22,71 @@ import Layout from '../layouts/Layout.astro';
 			  <span class="inline-block mr-2 font-bold text-base text-purplebg">Login</span>
 		  </button>
 		</div>
-		<!-- <div class="p-5">
-			<div class="grid grid-cols-3 gap-1">
-				<a type="button" class="transition duration-200 border border-graythree text-grayfive w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block cursor-pointer hover:text-pink"><span><i class='bx bxl-twitter'></i></span> <span>Twitter</span></a>
-				<a type="button" class="transi: anytion duration-200 border border-graythree text-grayfive w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block cursor-pointer hover:text-pink"><span><i class='bx bxl-google' ></i></span> <span>Google</span></a>
-				<a type="button" class="transition duration-200 border border-graythree text-grayfive w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block cursor-pointer hover:text-pink"><span><i class='bx bxl-github' ></i></span> <span>GitHub</span></a>
-			</div>
-		</div> -->
-		  <!-- <div class="py-5 px-5">
-		  <div class="flex flex-wrap justify-between">
-			<div class="text-center sm:text-left whitespace-nowrap">
-		  </div>
-		</div>
-	  </div> -->
 	</div>
   </div>
 </Layout>
 
 <script>
 //http://localhost:3000/main
-import { Directus } from '@directus/sdk';
-const testEmail = 'yelisei@internship.newstory.nl';
-const testPassword = 'testpassword12345';
-const directus = new Directus('http://127.0.0.1:8055', {
+// import { Directus, createDirectus } from '@directus/sdk';
+// const testEmail = 'yelisei@internship.newstory.nl';
+// const testPassword = 'testpassword12345';
+// const directus = new Directus('http://127.0.0.1:8055', {
+// 	// auth: {
+// 	// 	mode: 'cookie', // 'json' in Node.js
+// 	// 	autoRefresh: true,
+// 	// 	msRefreshBeforeExpires: 30000,
+// 	// 	staticToken: '',
+// 	// },
+// });
+
+// const client = createDirectus('http://127.0.0.1:8055');
+
+// async function testClick() {
+//   try {
+//     await directus.auth.login({
+//       email: testEmail,
+//       password: testPassword,
+//     });
+// 	window.location.href = "http://localhost:3000/main";
+//     console.log('Logged in successfully');
+// 	console.log(await directus.items('topic').readMany())
+//   } catch (error) {
+//     console.error('Login failed', error);
+//   }
+// }
+
+// const button = document.getElementById("loginBtn")!;
+// button.addEventListener("click", testClick);
+
+// import { createDirectus } from '@directus/sdk';
+
+// const client = createDirectus('http://127.0.0.1:8055');
+
+
+//TODO: 
+import {Directus, DirectusOptions} from '@directus/sdk';
+
+const config = {
 	auth: {
 		mode: 'cookie', // 'json' in Node.js
 		autoRefresh: true,
 		msRefreshBeforeExpires: 30000,
-		staticToken: '',
 	},
-});
+} as DirectusOptions;
+
+const directus = new Directus('http://127.0.0.1:8055', config);
+
+const testEmail = 'yelisei@internship.newstory.nl';
+const testPassword = 'testpassword12345';
 
 async function testClick() {
   try {
     await directus.auth.login({
-      email: testEmail,
-      password: testPassword,
+    email: testEmail,
+    password: testPassword,
     });
-	window.location.href = "http://localhost:3000/main";
+    window.location.href = "http://127.0.0.1:3000/main";
     console.log('Logged in successfully');
   } catch (error) {
     console.error('Login failed', error);
@@ -68,7 +95,11 @@ async function testClick() {
 
 const button = document.getElementById("loginBtn")!;
 button.addEventListener("click", testClick);
+
 </script>
+
+
+
 
 <!-- <script src="https://unpkg.com/@directus/sdk-js"></script>
 <script src="https://unpkg.com/@directus/sdk-js-cookie-storage"></script>

@@ -1,53 +1,168 @@
 ---
+// import { Directus } from "@directus/sdk";
+// const directus = new Directus('http://127.0.0.1:8055');
+// const cookie = Astro.cookies.get("directus_refresh_token")
+// directus.auth.storage.auth_refresh_token = cookie.value!
+// await directus.auth.refresh();
+
 // const search = Astro.url.searchParams.get('search')! || '';
-// let json = { data: []};
+// let result;
+// let videoData;
 // if (search.length > 0) {
-//     json = await fetch(`http://127.0.0.1:8055/items/Videos?filter[title][_contains]=${search}` || '').then((response) =>
-//     response.json()
-//     );  
-// } else if (localStorage.auth_token?.length > 0){
-//     json = await fetch(`http://127.0.0.1:8055/items/Topics?limit=25&fields[]=class&fields[]=slug&fields[]=status&fields[]=title&fields[]=topic_user.directus_users_id.email&fields[]=id&sort[]=id&page=1&filter[status][_neq]=archived&filter[_and][0][_and][0][topic_user][directus_users_id][id][_eq]=5b5adbfe-7d2f-401a-9aa2-89a1c9ffba10`).then((response) =>
-//     response.json()
-//     );  
+//         result = await fetch(`http://127.0.0.1:8055/items/Videos?filter[title][_contains]=${search}` || '').then((response) =>
+//         response.json()
+//         ); 
+//     videoData = result?.data; 
+// } else if (cookie.value!.length > 0) {
+// try {
+//   directus.auth.storage.auth_refresh_token = cookie.value!;
+//   await directus.auth.refresh();
+//   var topics = await directus.items("Videos");
+//   result = await topics.readByQuery({
+//     fields: ["*", "topic_ID.topic_user.directus_users_id"],
+//     filter: {
+//       "topic_ID": {
+//         "topic_user": {
+//           "directus_users_id": {
+//             "id": {
+//               _eq: "$CURRENT_USER",
+//             },
+//           },
+//         },
+//       },
+//     },
+//   });
+
+//   videoData = result?.data;
+//   localStorage.setItem("videoData", JSON.stringify(videoData));
+//   videoData = JSON.parse(localStorage.getItem("videoData")!);
+// } catch (error) {
+//   console.error(error);
+// }
 // }
 // else {
-//     json = await fetch(`http://127.0.0.1:8055/items/Videos`).then((response) =>
+//     result = await fetch(`http://127.0.0.1:8055/items/Videos`).then((response) =>
 //     response.json()
 //     );
+//     videoData = result?.data
 // }
-// const json = await fetch(`http://127.0.0.1:8055/items/Videos?filter={"_or":[{"title":{"_contains": "angular"}, {"description":{"_contains": "angular"}}]}` || '').then((response) =>
-// response.json()
-// );
-const json = await fetch('http://127.0.0.1:8055/items/Videos?limit=25&fields[]=title&fields[]=slug&fields[]=status&fields[]=topic_ID.topic_user.directus_users_id.id&fields[]=description&fields[]=heroimg&fields[]=icon&fields[]=chanel&fields[]=views&fields[]=videolink&fields[]=id&sort[]=id&page=1&filter[_and][0][_and][0][topic_ID][topic_user][directus_users_id][id][_eq]=$CURRENT_USER&filter[_and][1][status][_neq]=archived').then((response) =>
-response.json()
-);
-const videoData = json.data;
 
+// import { Directus } from "@directus/sdk";
+
+// // Initialize Directus instance
+// const directus = new Directus('http://127.0.0.1:8055');
+
+// async function fetchData() {
+//   const search = Astro.url.searchParams.get('search') || '';
+//   let result;
+//   let videoData;
+
+//   const isAuthenticated = Boolean(Astro.cookies.get("directus_refresh_token"));
+
+//   if (search.length > 0) {
+//     // User is searching, fetch items that match the search query
+//     result = await fetch(`http://127.0.0.1:8055/items/Videos?filter[title][_contains]=${search}`).then(response => response.json());
+//     videoData = result?.data;
+//   } else if (isAuthenticated) {
+//     // User is signed in, fetch items from topics they have subscribed to
+//     try {
+//       const currentUserID = "YOUR_CURRENT_USER_ID"; // Replace this with the actual ID of the current user
+//       result = await directus.items("Videos").readByQuery({
+//         fields: ["*", "topic_ID.topic_user.directus_users_id"],
+//         filter: {
+//           "topic_ID": {
+//             "topic_user": {
+//               "directus_users_id": {
+//                 "id": {
+//                   _eq: currentUserID,
+//                 },
+//               },
+//             },
+//           },
+//         },
+//       });
+
+//       videoData = result?.data;
+//       localStorage.setItem("videoData", JSON.stringify(videoData));
+//       videoData = JSON.parse(localStorage.getItem("videoData") || '');
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   } else {
+//     // User is not signed in, fetch all items
+//     result = await fetch(`http://127.0.0.1:8055/items/Videos`).then(response => response.json());
+//     videoData = result?.data;
+//   }
+
+//   return videoData;
+// }
+
+// Call the fetchData function and use the videoData accordingly in your application.
+// fetchData().then(videoData => {
+//   // Use the videoData here
+// });
+
+// const search = Astro.url.searchParams.get('search')! || '';
+import { Directus } from "@directus/sdk";
+const directus = new Directus("http://127.0.0.1:8055");
+const cookie = Astro.cookies.get("directus_refresh_token");
+let videoData;
+let result;
+  try {
+    directus.auth.storage.auth_refresh_token = cookie.value!;
+    await directus.auth.refresh();
+    var topics = await directus.items("Videos");
+    result = await topics.readByQuery({
+      fields: ["*", "topic_ID.topic_user.directus_users_id"],
+      filter: {
+        "topic_ID": {
+          "topic_user": {
+            "directus_users_id": {
+              "id": {
+                _eq: "$CURRENT_USER",
+              },
+            },
+          },
+        },
+      },
+    });
+  
+    videoData = result?.data;
+    localStorage.setItem("videoData", JSON.stringify(videoData));
+  } catch (error) {
+    console.error(error);
+  }
+if (localStorage.length === 0) {
+    result = await fetch(`http://127.0.0.1:8055/items/Videos`).then((response) =>
+    response.json()
+    );
+    videoData = result?.data
+}
+videoData = JSON.parse(localStorage.getItem("videoData")!);
 ---
-
-<ul class="flex flex-wrap justify-center gap-7 list-none m-4">
-    {
-        videoData.map((video: { slug: any; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; }) => (
-            <li>
-                <a href={`/video/${video.slug}`}>
-                    <div class="h-64 w-64 rounded bg-lightpurple shadow-md cursor-pointer transition duration-200 hover:shadow-2xl hover:bg-grape">
-                    <img class="h-3/5 w-5/5 rounded" src={video.heroimg} />
-                    <div class="flex mt-4 gap-2">
-                    <img class="h-8 w-8 rounded-full ml-2" src={video.icon} />
-                    <div>
-                        <p class="font-semibold font-sans text-pink text-lg">{video.title}</p>
-                        <div class="mt-1">
-                            <p class="font-sans text-darkgray text-sm font-medium">{video.chanel}</p>
-                            <div class="flex gap-2">
-                                <p class="font-sans text-darkgray text-xs font-normal">{video.views} views</p>
-                                <p class="font-sans text-darkgray text-xs font-normal">{video.time}</p>
+        <ul class="flex flex-wrap justify-center gap-7 list-none m-4">
+            {
+                videoData?.map((video: { slug: any; heroimg: string | null | undefined; icon: string | null | undefined; title: unknown; chanel: unknown; views: unknown; time: unknown; }) => (
+                    <li>
+                        <a href={`/video/${video.slug}`}>
+                            <div class="h-64 w-64 rounded bg-lightpurple shadow-md cursor-pointer transition duration-200 hover:shadow-2xl hover:bg-grape">
+                            <img class="h-3/5 w-5/5 rounded" src={video.heroimg} />
+                            <div class="flex mt-4 gap-2">
+                            <img class="h-8 w-8 rounded-full ml-2" src={video.icon} />
+                            <div>
+                                <p class="font-semibold font-sans text-pink text-lg">{video.title}</p>
+                                <div class="mt-1">
+                                    <p class="font-sans text-darkgray text-sm font-medium">{video.chanel}</p>
+                                    <div class="flex gap-2">
+                                        <p class="font-sans text-darkgray text-xs font-normal">{video.views} views</p>
+                                        <p class="font-sans text-darkgray text-xs font-normal">{video.time}</p>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
-                    </div>
-                    </div>
-                </div>
-                </a>
-            </li>
-        ))
-    }
-</ul>
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
